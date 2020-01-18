@@ -1,0 +1,1 @@
+Program(target = 'bin/app', source = ['src/main.cpp', Glob('src/textInterface/*.cpp')], CCFLAGS = '-std=c++11 -pthread -Ilib/SFML-2.5.1/include', LIBS = ['sfml-window', 'sfml-graphics', 'sfml-system'], LIBPATH = ['lib/SFML-2.5.1/lib'])
