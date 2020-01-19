@@ -33,6 +33,7 @@ public:
 	void update();
 
 	int setFont(std::string);
+	int replaceRecentLine(std::string);
 
 	void setText(std::string txt);
 	void setTextSize(int);
@@ -43,6 +44,7 @@ public:
 	void setCanvasSize(sf::Vector2f);
 	void setCanvasPosition(sf::Vector2f);
 	void setNewLine();
+	void setNewLine(int);
 
 	std::vector<sf::Text>& returnText();
 

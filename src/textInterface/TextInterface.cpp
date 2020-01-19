@@ -1,9 +1,9 @@
 #include "TextInterface.hpp"
 
 TextInterface::TextInterface() {
-    textSize = 50;
+    textSize = 40;
 	lineSpacing = 5;
-	paragraphSpacing = 15;
+	paragraphSpacing = 5;
 
 	textStyle = 0;
     textColor = sf::Color::Black;
