@@ -4,6 +4,7 @@ TextInterface::TextInterface() {
     textSize = 40;
 	lineSpacing = 5;
 	paragraphSpacing = 5;
+    newLine = 0;
 
 	textStyle = 0;
     textColor = sf::Color::Black;

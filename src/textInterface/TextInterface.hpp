@@ -45,6 +45,7 @@ public:
 	void setCanvasPosition(sf::Vector2f);
 	void setNewLine();
 	void setNewLine(int);
+	void removeRecentLine();
 
 	std::vector<sf::Text>& returnText();
 

@@ -10,35 +10,42 @@ int main() {
     int count = 0;
 
     std::vector<std::string> input;
-    input.resize(input.size() + 1);
+    //input.resize(input.size() + 1);
 
     sf::RenderWindow w(sf::VideoMode(500, 500), "textinterface test");
     sf::Event e;
 
     ti.setFont("terminus.ttf");
 
-    ti.setText("test");
-    ti.setNewLine();
+    //ti.setText("test");
+    //ti.setNewLine();
 
     //std::cout << "text: " << tmp[0].getString().toAnsiString() << std::endl;
 
     while(exit != 1) {
+
+
 
 		while (w.pollEvent(e)) {
             //close window
             if (e.type == sf::Event::Closed)
                 exit = 1;
 
-            //new line
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
-                ti.setNewLine();
-                input.resize(input.size() + 1);
-            }
-
+            //get keyboard input
             if(sf::Event::KeyPressed) {
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) { //new line
+                    ti.setNewLine();
+                    input.resize(input.size() + 1);
+                }
                 if (e.type == sf::Event::TextEntered) {
-                    if(e.text.unicode == 8 && input[input.size() - 1].size() > 0) { //erase last letter
-                        input[input.size() - 1].erase(input[input.size() - 1].end() - 1, input[input.size() - 1].end());
+                    if(e.text.unicode == 8) { //erase last letter
+                        if(input[input.size() - 1].size() > 0) { //if letters exist
+                            input[input.size() - 1].erase(input[input.size() - 1].end() - 1, input[input.size() - 1].end());
+                        } else if(input.size() > 0) { //if no letters exist
+                            input.pop_back();
+                            ti.removeRecentLine();
+                        }
+
                     } else if (e.text.unicode < 127 && e.text.unicode > 31) { //accept input
                         input[input.size() - 1] += static_cast<char>(e.text.unicode);
                     }
@@ -49,6 +56,7 @@ int main() {
         if(ti.replaceRecentLine(input[input.size() - 1]) == 1) {
             input.resize(input.size() + 1);
         }
+
         ti.update();
 
         std::vector<sf::Text> tmp = ti.returnText();

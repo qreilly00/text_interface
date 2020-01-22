@@ -10,10 +10,21 @@ void TextInterface::update() {
         text[i].setFillColor(textColor);
     }
 
+    if(newLine < 0) {
+        newLine ++;
+        for(int i = text.size() - 1; i >= 0; i--) {
+            text[i].setPosition(sf::Vector2f(text[i].getPosition().x, text[i].getPosition().y + textSize + paragraphSpacing));
+            if(text.size() > 0) {
+                text.pop_back();
+            }
+        }
+    }
+
     if(newLine > 0) {
         newLine --;
         for(int i = text.size() - 1; i >= 0; i--) {
             text[i].setPosition(sf::Vector2f(text[i].getPosition().x, text[i].getPosition().y - textSize - paragraphSpacing));
+            text.resize(text.size() + 1);
         }
     }
 
