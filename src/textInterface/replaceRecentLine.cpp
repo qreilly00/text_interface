@@ -6,6 +6,7 @@ int TextInterface::replaceRecentLine(std::string in) {
         text[text.size() - 1].setString(in);
         return 0;
     } else {
+        text[text.size() - 1].setString(in);
         setNewLine();
         return 1;
     }

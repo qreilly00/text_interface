@@ -1,6 +1,8 @@
 #include "TextInterface.hpp"
 
 TextInterface::TextInterface() {
+    //text.resize(1);
+
     textSize = 40;
 	lineSpacing = 5;
 	paragraphSpacing = 5;
@@ -14,6 +16,8 @@ TextInterface::TextInterface() {
 }
 
 TextInterface::TextInterface(int txtSz, int lnSpc, int prgSpc, uint32_t stl, sf::Color clr, sf::Vector2f cnvSz, sf::Vector2f cnvPos) {
+    //text.resize(1);
+
     textSize = txtSz;
 	lineSpacing = lnSpc;
 	paragraphSpacing = prgSpc;
